@@ -7,6 +7,13 @@ namespace Catalog.API.Data
     {
         public static void SeedData(IMongoCollection<Product> productCollection)
         {
+            //int workerThreads;
+            //int completionPortThreads;
+            //ThreadPool.GetAvailableThreads(out workerThreads, out completionPortThreads);
+            //Console.WriteLine(Environment.ProcessorCount + " - " + workerThreads + " - " + completionPortThreads);
+            //var thread = productCollection.DeleteManyAsync(a => true);
+            //thread.Wait(15000);
+            
             bool existProduct = productCollection.Find(p => true).Any();
             if (!existProduct)
             {
