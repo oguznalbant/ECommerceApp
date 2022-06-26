@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  # MONGO - CATALOGDB
+  catalogdb:
+    image: mongo
+
+  # .NET - CATALOG.API
+  catalog.api:
+    image: ${DOCKER_REGISTRY-}catalog.api
+    build:
+      context: .
+      dockerfile: Catalog.API/Dockerfile
+volumes:
+  mongo_data:
+
+

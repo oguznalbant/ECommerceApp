@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  # MONGO - CATALOGDB
+  catalogdb: #catalog mongo database
+    container_name: catalogdb
+    image: mongo
+    volumes: #volume from mongo informations place
+      - mongo_data:/data/db
+    restart: always # if there is a problem do restart
+  
+  # .NET - CATALOG.API
+  catalog.api:
+    container_name: catalog_api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DatabaseSettings:ConnectionString=mongodb://catalogdb:27017
+    depends_on: #check first catalogdb up
+      - catalogdb
+    ports: #port 8000 for catalog microservice
+      - "8000:80" 
