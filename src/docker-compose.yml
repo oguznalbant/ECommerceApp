@@ -1,6 +1,11 @@
 version: '3.4'
 
 services:
+
+  # MONGOEXPRESS - CATALOGDBExpress
+  catalogExpress:
+    image: mongo-express
+
   # MONGO - CATALOGDB
   catalogdb:
     image: mongo

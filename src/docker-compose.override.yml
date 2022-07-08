@@ -1,6 +1,15 @@
 version: '3.4'
 
 services:
+
+  # MONGOEXPRESS - CATALOGDB
+  catalogExpress: #catalog mongo database
+    container_name: catalogExpress
+    image: mongo-express
+    restart: always # if there is a problem do restart
+    depends_on: #check first catalogdb up
+     - catalogdb
+  
   # MONGO - CATALOGDB
   catalogdb: #catalog mongo database
     container_name: catalogdb
