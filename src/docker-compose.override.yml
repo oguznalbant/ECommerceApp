@@ -7,8 +7,6 @@ services:
     container_name: catalogExpress
     image: mongo-express
     restart: always # if there is a problem do restart
-    depends_on: #check first catalogdb up
-     - catalogdb
   
   # MONGO - CATALOGDB
   catalogdb: #catalog mongo database
