@@ -1,22 +1,23 @@
 version: '3.4'
 
 services:
-
-  # MONGOEXPRESS - CATALOGDBExpress
   catalogExpress:
     image: mongo-express
 
-  # MONGO - CATALOGDB
   catalogdb:
     image: mongo
 
-  # .NET - CATALOG.API
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalog.api
     build:
       context: .
       dockerfile: Catalog.API/Dockerfile
+
+  basket.api:
+    image: ${DOCKER_REGISTRY-}basketapi
+    build:
+      context: .
+      dockerfile: Services/Basket/Basket.API/Dockerfile
+
 volumes:
   mongo_data:
-
-

@@ -2,27 +2,30 @@ version: '3.4'
 
 services:
 
-  # MONGOEXPRESS - CATALOGDB
-  catalogExpress: #catalog mongo database
+  catalogExpress: 
     container_name: catalogExpress
     image: mongo-express
-    restart: always # if there is a problem do restart
+    restart: always 
   
-  # MONGO - CATALOGDB
-  catalogdb: #catalog mongo database
+  catalogdb: 
     container_name: catalogdb
     image: mongo
-    volumes: #volume from mongo informations place
+    volumes: 
       - mongo_data:/data/db
-    restart: always # if there is a problem do restart
+    restart: always 
   
-  # .NET - CATALOG.API
   catalog.api:
     container_name: catalog_api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DatabaseSettings:ConnectionString=mongodb://catalogdb:27017
-    depends_on: #check first catalogdb up
+    depends_on: 
       - catalogdb
-    ports: #port 8000 for catalog microservice
+    ports:
       - "8000:80" 
+  
+  basket.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
