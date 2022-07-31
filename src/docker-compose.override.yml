@@ -21,6 +21,17 @@ services:
     ports:
       - "6379:6379"
 
+  discountdb: 
+    container_name: discountdb
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD= 1234
+      - POSTGRES_USER= admin1234
+      - POSTGRES_DB= discount
+    restart: always 
+    ports:
+      - "5432:5432"
+
   portainer: 
     container_name: portainer
     image: portainer/portainer-ce
