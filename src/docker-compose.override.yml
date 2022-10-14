@@ -22,7 +22,7 @@ services:
       - "6379:6379"
 
   discountdb: 
-    image: postgres:14.1-alpine
+    image: postgres
     restart: always
     environment:
       - POSTGRES_USER=postgres
@@ -70,3 +70,13 @@ services:
       - basketdb
     ports:
       - "8004:80"
+
+  discount.api:
+    container_name: discount_api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionString:Server=dsicountdb;Port=5432;Database=discoundDb;User Id=postgres;Password=postgres"
+    depends_on: 
+      - discountdb
+    ports:
+      - "8005:80"
