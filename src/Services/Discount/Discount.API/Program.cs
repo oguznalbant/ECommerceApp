@@ -1,3 +1,4 @@
+using Discount.API.Extensions;
 using Discount.API.Repository;
 using Discount.API.Repository.Abstraction;
 
@@ -22,5 +23,10 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+/* Seed Migration */
+
+app.SeedDatabase<Program>();
+
 
 app.Run();
