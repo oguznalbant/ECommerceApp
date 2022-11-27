@@ -1,7 +1,7 @@
 using Discount.API.Extensions;
 using Discount.API.Repository;
 using Discount.API.Repository.Abstraction;
-
+Console.WriteLine("Discount api is started");
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -27,6 +27,6 @@ app.MapControllers();
 /* Seed Migration */
 
 app.SeedDatabase<Program>();
-
+Console.WriteLine("Discount api is finished");
 
 app.Run();

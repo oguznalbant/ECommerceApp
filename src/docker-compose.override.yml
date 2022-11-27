@@ -21,12 +21,14 @@ services:
     ports:
       - "6379:6379"
 
-  discountdb: 
+  discountdb:
+    container_name: discountdb
     image: postgres
     restart: always
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=discountDatabase
     ports:
       - '5432:5432'
 
@@ -75,7 +77,7 @@ services:
     container_name: discount_api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "ConnectionString:Server=dsicountdb;Port=5432;Database=discoundDb;User Id=postgres;Password=postgres"
+      - "ConnectionString:Server=discountdb;Port=5432;Database=discountdb;User Id=postgres;Password=postgres"
     depends_on: 
       - discountdb
     ports:
