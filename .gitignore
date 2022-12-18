@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 /src/docker-instructions.txt
 /src/Services/Discount/Discount.API/readme.txt
+/src/Services/Discount/Discount.GRPC/readme.txt
