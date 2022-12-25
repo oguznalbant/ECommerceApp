@@ -46,6 +46,14 @@ namespace Discount.GRPC.Extensions
 
                     Console.WriteLine($"TABLE created");
 
+                    command.CommandText = "INSERT INTO Coupon(ProductName, Description, Amount) VALUES('IPhone X', 'IPhone Discount', 150);";
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = "INSERT INTO Coupon(ProductName, Description, Amount) VALUES('Samsung 10', 'Samsung Discount', 100);";
+                    command.ExecuteNonQuery();
+
+                    Console.WriteLine($"2 items added");
+
                 }
                 catch (NpgsqlException ex)
                 {

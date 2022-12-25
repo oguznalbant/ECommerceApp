@@ -71,7 +71,7 @@ services:
     depends_on: 
       - basketdb
     ports:
-      - "8004:80"
+      - "8001:80"
 
   discount.api:
     container_name: discount_api
@@ -81,4 +81,4 @@ services:
     depends_on: 
       - discountdb
     ports:
-      - "8005:80"
+      - "8002:80"
