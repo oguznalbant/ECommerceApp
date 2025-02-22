@@ -1,6 +1,9 @@
 version: '3.4'
 
 services:
+  rabbit:
+    image: rabbitmq
+
   catalogExpress:
     image: mongo-express
 
@@ -20,6 +23,12 @@ services:
     image: portainer/portainer-ce
     restart: always
     container_name: portainer
+
+  order.api:
+    image: ${DOCKER_REGISTRY-}order.api
+    build:
+      context: .
+      dockerfile: Services/Order/Order.API/Dockerfile
 
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalog.api
